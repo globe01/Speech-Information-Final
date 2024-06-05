@@ -1,0 +1,16 @@
+DUMMY*
+
+__pycache__
+.ipynb_checkpoints
+.*.swp
+
+build
+*.c
+monotonic_align/monotonic_align
+
+.vscode
+.DS_Store
+
+logs
+test
+datasets/madasr23_base/filelists
