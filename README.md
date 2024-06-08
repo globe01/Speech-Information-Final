@@ -140,7 +140,7 @@ python3 synthesize.py --text "YOUR_DESIRED_TEXT" --restore_step 900000 --mode si
 python3 prepare_align.py config/LJSpeech/preprocess.yaml
 ```
 
-![预处理](assets\预处理.png)
+![预处理](assets/预处理.png)
 
 将[支持的数据集的对齐文件](https://drive.google.com/drive/folders/1DBRkALpPd6FL9gjHMmMEdHODmkgNIIK4?usp=sharing)解压到 ``preprocessed_data/LJSpeech/TextGrid/``。
 
@@ -150,7 +150,7 @@ python3 prepare_align.py config/LJSpeech/preprocess.yaml
 python3 preprocess.py config/LJSpeech/preprocess.yaml
 ```
 
-![预处理2](assets\预处理2.png)
+![预处理2](assets/预处理2.png)
 
 
 
@@ -170,13 +170,13 @@ python3 train.py -p config/LJSpeech/preprocess.yaml -m config/LJSpeech/model.yam
 
 训练的部分截图如下：
 
-![训练1](assets\训练1.png)
+![训练1](assets/训练1.png)
 
-![训练1.5](assets\训练1.5.png)
+![训练1.5](assets/训练1.5.png)
 
-![训练2](assets\训练2.png)
+![训练2](assets/训练2.png)
 
-![训练3](assets\训练3.png)
+![训练3](assets/训练3.png)
 
 ![训练结束](assets/训练结束.png)
 
@@ -192,9 +192,9 @@ tensorboard --logdir output/log/LJSpeech
 
 会显示损失曲线、合成的 mel 频谱图和音频：
 
-![](assets\tensorboard_loss.png)
-![](assets\tensorboard_spec.png)
-![](assets\tensorboard_audio.png)
+![](assets/tensorboard_loss.png)
+![](assets/tensorboard_spec.png)
+![](assets/tensorboard_audio.png)
 
 
 
