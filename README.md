@@ -134,6 +134,12 @@ python3 synthesize.py --text "YOUR_DESIRED_TEXT" --restore_step 900000 --mode si
 
 #### 2.4.2 预处理
 
+修改`config/LJSpeech/preprocess.yaml`，改成自己的路径或者相对路径：
+
+```yaml
+corpus_path: "./Data/LJSpeech-1.1"
+```
+
 运行：
 
 ```
