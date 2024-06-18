@@ -76,6 +76,10 @@ python3 synthesize.py --text "YOUR_DESIRED_TEXT" --restore_step 900000 --mode si
 
 例如：
 python3 synthesize.py --text "nankai university" --restore_step 900000 --mode single -p config/LJSpeech/preprocess.yaml -m config/LJSpeech/model.yaml -t config/LJSpeech/train.yaml
+
+python3 synthesize.py --text "Training is over, let's try my 900000 model" --restore_step 900000 --mode single -p config/LJSpeech/preprocess.yaml -m config/LJSpeech/model.yaml -t config/LJSpeech/train.yaml
+
+python3 synthesize.py --text "Try my 100000 model" --restore_step 100000 --mode single -p config/LJSpeech/preprocess.yaml -m config/LJSpeech/model.yaml -t config/LJSpeech/train.yaml
 ```
 
 对于多说话人普通话 TTS，先创建 `output/result/AISHELL3` 目录，运行：
@@ -190,17 +194,32 @@ python3 train.py -p config/LJSpeech/preprocess.yaml -m config/LJSpeech/model.yam
 
 ### 2.5 TensorBoard
 
-在本地主机上启动 TensorBoard：
+在本地主机上启动TensorBoard：
 
-```
+```shell
 tensorboard --logdir output/log/LJSpeech
 ```
 
-会显示损失曲线、合成的 mel 频谱图和音频：
+在AutoDL上启动TensorBoard：
 
-![](assets/tensorboard_loss.png)
-![](assets/tensorboard_spec.png)
-![](assets/tensorboard_audio.png)
+```shell
+首先结束默认启动的Tensorboard进程
+ps -ef | grep tensorboard | awk '{print $2}' | xargs kill -9
+
+tensorboard --port 6007 --logdir output/log/LJSpeech
+```
+
+![查看曲线图](assets/查看曲线图.png)
+
+![曲线图2](assets/曲线图2.png)
+
+![曲线图3](assets/曲线图3.png)
+
+![曲线图4音频](assets/曲线图4音频.png)
+
+会显示损失曲线、合成的 mel 频谱图和音频.
+
+
 
 
 
