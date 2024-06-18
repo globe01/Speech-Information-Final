@@ -31,11 +31,15 @@ class ScheduledOptim:
         self._optimizer.load_state_dict(path)
 
     def _get_lr_scale(self):
-        lr = np.min(
-            [
-                np.power(self.current_step, -0.5),
-                np.power(self.n_warmup_steps, -1.5) * self.current_step,
-            ]
+        # lr = np.min(
+        #     [
+        #         np.power(self.current_step, -0.5),
+        #         np.power(self.n_warmup_steps, -1.5) * self.current_step,
+        #     ]
+        # )
+        lr = min(
+            self.current_step ** -0.5,
+            self.current_step * self.n_warmup_steps ** -1.5
         )
         for s in self.anneal_steps:
             if self.current_step > s:
