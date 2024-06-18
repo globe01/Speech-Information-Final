@@ -2,16 +2,28 @@ path:
   ckpt_path: "./output/ckpt/LJSpeech"
   log_path: "./output/log/LJSpeech"
   result_path: "./output/result/LJSpeech"
+# optimizer:
+#   batch_size: 16
+#   betas: [0.9, 0.98]
+#   eps: 0.000000001
+#   weight_decay: 0.0
+#   grad_clip_thresh: 1.0
+#   grad_acc_step: 1
+#   warm_up_step: 4000
+#   anneal_steps: [300000, 400000, 500000]
+#   anneal_rate: 0.3
+
 optimizer:
-  batch_size: 16
+  batch_size: 32  # 增加批量大小
   betas: [0.9, 0.98]
   eps: 0.000000001
-  weight_decay: 0.0
+  weight_decay: 0.01  # 添加权重衰减以防止过拟合
   grad_clip_thresh: 1.0
-  grad_acc_step: 1
+  grad_acc_step: 2  # 增加梯度累积步数
   warm_up_step: 4000
-  anneal_steps: [300000, 400000, 500000]
-  anneal_rate: 0.3
+  anneal_steps: [100000, 300000, 500000]  # 调整衰减步骤
+  anneal_rate: 0.5  # 增加学习率衰减率
+
 step:
   total_step: 900000
   log_step: 100
