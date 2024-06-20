@@ -79,8 +79,20 @@ python3 synthesize.py --text "nankai university" --restore_step 900000 --mode si
 
 python3 synthesize.py --text "Training is over, let's try my 900000 model" --restore_step 900000 --mode single -p config/LJSpeech/preprocess.yaml -m config/LJSpeech/model.yaml -t config/LJSpeech/train.yaml
 
-python3 synthesize.py --text "Try my 100000 model" --restore_step 100000 --mode single -p config/LJSpeech/preprocess.yaml -m config/LJSpeech/model.yaml -t config/LJSpeech/train.yaml
+python3 synthesize.py --text "This is the original version" --restore_step 300000 --mode single -p config/LJSpeech/preprocess.yaml -m config/LJSpeech/model.yaml -t config/LJSpeech/train.yaml
+
+python3 synthesize.py --text "This is the newest version" --restore_step 300000 --mode single -p config/LJSpeech/preprocess.yaml -m config/LJSpeech/model.yaml -t config/LJSpeech/train.yaml
 ```
+
+评估：
+
+```
+python evaluate_mos_keras.py -d output/result/LJSpeech -m cnn_blstm.h5
+```
+
+
+
+
 
 对于多说话人普通话 TTS，先创建 `output/result/AISHELL3` 目录，运行：
 

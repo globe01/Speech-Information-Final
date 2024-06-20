@@ -14,7 +14,7 @@ from dataset import Dataset
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-
+# 评估模型
 def evaluate(model, step, configs, logger=None, vocoder=None):
     preprocess_config, model_config, train_config = configs
 
