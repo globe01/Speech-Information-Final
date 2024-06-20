@@ -82,17 +82,38 @@ python3 synthesize.py --text "Training is over, let's try my 900000 model" --res
 python3 synthesize.py --text "This is the original version" --restore_step 300000 --mode single -p config/LJSpeech/preprocess.yaml -m config/LJSpeech/model.yaml -t config/LJSpeech/train.yaml
 
 python3 synthesize.py --text "This is the newest version" --restore_step 300000 --mode single -p config/LJSpeech/preprocess.yaml -m config/LJSpeech/model.yaml -t config/LJSpeech/train.yaml
+
+python3 synthesize.py --text "A student from the School of Computer Science and Technology at Nankai University is testing the results of speech information processing using the same sentence, student ID 2111172" --restore_step 300000 --mode single -p config/LJSpeech/preprocess.yaml -m config/LJSpeech/model.yaml -t config/LJSpeech/train.yaml
+
+
+python3 synthesize.py --text "The third part of the homework is to reproduce the model of the original code and try to improve it" --restore_step 400000 --mode single -p config/LJSpeech/preprocess.yaml -m config/LJSpeech/model.yaml -t config/LJSpeech/train.yaml
 ```
 
 评估：
 
 ```
 python evaluate_mos_keras.py -d output/result/LJSpeech -m cnn_blstm.h5
+
+python evaluate_mos_keras.py -d output/result/LJSpeech/origin -m cnn_blstm.h5
+
+python evaluate_mos_keras.py -d output/result/LJSpeech/new -m cnn_blstm.h5
 ```
 
+由于训练时间太长，时间有限这里都选取300000时保存的模型进行测试：
+
+- origin：
+
+![origin](assets/origin.png)
+
+![image-20240620123804626](README.assets/image-20240620123804626.png)
 
 
 
+- new：
+
+![new](assets/new.png)
+
+![image-20240620123747686](README.assets/image-20240620123747686.png)
 
 对于多说话人普通话 TTS，先创建 `output/result/AISHELL3` 目录，运行：
 
@@ -130,6 +151,8 @@ python3 synthesize.py --source preprocessed_data/LJSpeech/val.txt --restore_step
 
 ```
 python3 synthesize.py --text "YOUR_DESIRED_TEXT" --restore_step 900000 --mode single -p config/LJSpeech/preprocess.yaml -m config/LJSpeech/model.yaml -t config/LJSpeech/train.yaml --duration_control 0.8 --energy_control 0.8
+
+python3 synthesize.py --text "personalize the voice" --restore_step 900000 --mode single -p config/LJSpeech/preprocess.yaml -m config/LJSpeech/model.yaml -t config/LJSpeech/train.yaml --duration_control 0.8 --energy_control 0.8
 ```
 
 
@@ -229,7 +252,7 @@ tensorboard --port 6007 --logdir output/log/LJSpeech
 
 ![曲线图4音频](assets/曲线图4音频.png)
 
-会显示损失曲线、合成的 mel 频谱图和音频.
+会显示损失曲线、合成的mel频谱图和音频。
 
 
 

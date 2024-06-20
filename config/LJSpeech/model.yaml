@@ -36,7 +36,7 @@ variance_embedding:
   n_bins: 256
 
 gst:
-  use_gst: False
+  use_gst: True
   conv_filters: [32, 32, 64, 64, 128, 128]
   gru_hidden: 128
   token_size: 128
